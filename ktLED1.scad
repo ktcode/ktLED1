@@ -17,7 +17,7 @@ r1 = 20;
 x1 = 16;
 
 A = 1;
-B = 0;
+B = 1;
 
 if(A)
 {
@@ -26,6 +26,10 @@ if(A)
 
 if(B)
 {
+    
+    translate( [-10, 0, -10] )
+    rotate([0, 180, 0])
+    {
     difference()
     {
         mirror( v=[0, 0, 1] )
@@ -34,16 +38,17 @@ if(B)
         
         translate( [10, 5.5, -10-5.8-gap1] )
         rotate( [0, 0, 20] )
-        cube( [10, 3, 5.8+gap2] );
+        cube( [10, 3, 5.8+gap2+1] );
         translate( [10, 5.5, -10-5.8-gap1] )
         rotate( [0, 0, -10] )
-        cube( [22, 3, 5.8+gap2] );
+        cube( [22, 3, 5.8+gap2+1] );
         translate( [15, 6.65, -10-5.8-gap1] )
         rotate( [0, 0, -10] )
-        cube( [22, 3, 5.8+gap2] );
+        cube( [22, 3, 5.8+gap2+1] );
     }
             translate( [32*cos(r1)-2, 0, -10-5.8] )
-            cube( [2, 8, 5.8] );
+            cube( [2, 8, 5.8+1] );
+    }
 }
 
 
@@ -55,27 +60,28 @@ module right()
         {
             union()
             {
-                cube( [32, 6.35, 5.8] );
-                translate( [0, -15, 0] )
-                cube( [32, 15, 5.8] );
+                translate( [0, 0, -1] )
+                cube( [32, 6.35, 5.8+1] );
+                translate( [0, -15, -1] )
+                cube( [32, 15, 5.8+1] );
             }
             translate( [(32-25)/2, 6.35/2, 0] )
             {
                 translate( [0, 0, 3.3/2] )
-                cylinder( h=3.3+gap2, r=2.7/2, center=true, $fn=30 );
+                cylinder( h=3.3+gap2+2, r=2.7/2, center=true, $fn=30 );
                 translate( [0, 0, 3.3+2.5/2] )
                 cylinder( h=2.5+gap2, r1=2.7/2, r2=5.4/2, center=true, $fn=30 );
                 translate( [25, 0, 3.3/2] )
-                cylinder( h=3.3+gap2, r=2.7/2, center=true, $fn=30 );
+                cylinder( h=3.3+gap2+2, r=2.7/2, center=true, $fn=30 );
                 translate( [25, 0, 3.3+2.5/2] )
                 cylinder( h=2.5+gap2, r1=2.7/2, r2=5.4/2, center=true, $fn=30 );
             }
             rotate( [0, 0, -r1] )
             {
-                translate( [0, -15, 0-gap1] )
-                cube( [50, 15, 5.8+gap2] );
-                translate( [32*cos(r1), -gap1, 0-gap1] )
-                cube( [10, 15, 5.8+gap2] );
+                translate( [0, -15, 0-gap1-1] )
+                cube( [50, 15, 5.8+gap2+1] );
+                translate( [32*cos(r1), -gap1, 0-gap1-1] )
+                cube( [10, 15, 5.8+gap2+1] );
             }
         }
     }
